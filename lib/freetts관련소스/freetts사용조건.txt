@@ -1,0 +1,8 @@
+Cygwin설치
+Devel > make 패키지
+Base > findutils 패키지
+Archive > zip 패키지 설치
+
+ANT설치
+환경변수설정
+https://k39335.tistory.com/56

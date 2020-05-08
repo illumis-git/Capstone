@@ -77,27 +77,27 @@ private JLabel jPW;
       jp2 = new JPanel();
       jp3 = new JPanel();  //로그인 화면
       jp4 = new JPanel();
-      jbtn.setFont(new Font("HY엽서L", Font.PLAIN, (int) 20));
-      jlb1.setFont(new Font("HY엽서L", Font.PLAIN, (int) 15));
-      jlb1.setBackground(Color.PINK);
-      jlb2.setBackground(Color.PINK);
-      jlb2.setFont(new Font("HY엽서L", Font.PLAIN, (int) 15));
+      jbtn.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 20));
+      jlb1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
+      jlb1.setBackground(new Color(4, 191, 123));
+      jlb2.setBackground(new Color(4, 191, 123));
+      jlb2.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
       
-      jID.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
+      jID.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       jID.setHorizontalAlignment(jID.CENTER);
-      jPW.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
+      jPW.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       jPW.setHorizontalAlignment(jPW.CENTER);
       
-      idc.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
+      idc.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       idc.setBackground(Color.WHITE);
-      pass.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
+      pass.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       pass.setBackground(Color.WHITE);
-      jbtn1.setBackground(Color.PINK);
-      jbtn1.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
-      jexit.setBackground(Color.PINK);
-      jexit.setFont(new Font("HY엽서L", Font.PLAIN, (int) 30));
-      jbtn.setBackground(Color.PINK);
-      jlo.setBackground(Color.PINK);
+      jbtn1.setBackground(new Color(242, 159, 5));
+      jbtn1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
+      jexit.setBackground(new Color(242, 159, 5));
+      jexit.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
+      jbtn.setBackground(new Color(242, 159, 5));
+      jlo.setBackground(new Color(242, 159, 5));
       
       jp1.setLayout(new BorderLayout());
       jp2.setLayout(new BorderLayout());
@@ -108,9 +108,10 @@ private JLabel jPW;
       jp2.add(jlb1, BorderLayout.CENTER);
       jp2.add(jlb2, BorderLayout.EAST);
       
-      jp1.setBackground(Color.PINK);
-      jp2.setBackground(Color.PINK);
-      jp3.setBackground(Color.PINK);
+      jp1.setBackground(new Color(4, 191, 123));
+      jp2.setBackground(new Color(4, 191, 123));
+      //채팅방 상단 색
+      jp3.setBackground(new Color(4, 191, 123));
       jp3.add(jID);
       jp3.add(idc);
       jp3.add(jPW);
