@@ -16,7 +16,7 @@ public class MultiClient implements ActionListener {
    private JTextField jtf;//전송,아이디,비번창 
 private static JTextField idc;
 private JTextField pass;
-   private JTextArea jta, jlo;//키티배경창,로그인창     타자
+   private JTextArea jta, jlo;//키티배경창,로그인창     타자  jta가 송수신데이터가찍히는에어리어 
    private static JLabel jlb1;//키티창에서 유저아이디랑 아이피주소를나타내는 라벨
 private JLabel jlb2;
 private JLabel jID;
@@ -29,8 +29,8 @@ private JLabel jPW;
    public boolean saypower = false;
    private boolean login = false;
    
-   //Image img = new ImageIcon("D:\\Eclipse\\Java\\그림파일\\C.jpg").getImage();
-
+   Image img = new ImageIcon("채팅방.jpg").getImage();
+   //위치=workspace.Capstone
    public MultiClient() {
       /*ip = argIp;
       id = argId;*/
@@ -50,15 +50,16 @@ private JLabel jPW;
       jta = new JTextArea(43, 43) {
          {
             setOpaque(false);
+            setFont(new Font("나눔바른고딕", Font.PLAIN, (int)10));
          }
 
          public void paintComponent(Graphics g) {
-            //g.drawImage(img, 0, 0, null);
+            g.drawImage(img, 0, 0, null);
             super.paintComponent(g);
          }
       };
       jlo = new JTextArea(30,30); 
-      jlb1 = new JLabel() {//제목
+      jlb1 = new JLabel() {//채팅방제목
          {
             setOpaque(false);
          }
@@ -79,8 +80,8 @@ private JLabel jPW;
       jp4 = new JPanel();
       jbtn.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 20));
       jlb1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
-      jlb1.setBackground(new Color(4, 191, 123));
-      jlb2.setBackground(new Color(4, 191, 123));
+      jlb1.setBackground(new Color(242, 159, 5));
+      jlb2.setBackground(new Color(242, 159, 5));
       jlb2.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
       
       jID.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
@@ -109,7 +110,7 @@ private JLabel jPW;
       jp2.add(jlb2, BorderLayout.EAST);
       
       jp1.setBackground(new Color(4, 191, 123));
-      jp2.setBackground(new Color(4, 191, 123));
+      jp2.setBackground(new Color(242, 159, 5));
       //채팅방 상단 색
       jp3.setBackground(new Color(4, 191, 123));
       jp3.add(jID);

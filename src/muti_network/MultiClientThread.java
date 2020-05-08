@@ -1,5 +1,7 @@
 package muti_network;
 
+
+import java.awt.Color;
 import java.awt.Font;
 import java.util.Scanner;
 
@@ -19,13 +21,18 @@ public class MultiClientThread extends Thread{
         while(!isStop){
             try{
                 message = (String)mc.getOis().readObject();
-                receivedMsg = message.split("#");
+                receivedMsg = message.split("#");//내가 텍스트를 보낸다.
 
             }catch(Exception e){
                 e.printStackTrace();
                 isStop = true;
             }
-            System.out.println(receivedMsg[0]+","+receivedMsg[1]);
+            System.out.println(receivedMsg[0]+","+receivedMsg[1]); //콘솔창에찍히는부분
+            if(receivedMsg[0].equals(mc.getId())) {
+            	mc.getJta().setForeground(new Color(13, 242, 5));
+            } else {
+            	mc.getJta().setForeground(new Color(242, 116, 5));
+            }
             if(receivedMsg[1].equals("exit")){
                 if(receivedMsg[0].equals(mc.getId())){
                     mc.exit();
