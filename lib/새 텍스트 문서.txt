@@ -1,0 +1,27 @@
+project ID peak-hangout-275605
+
+MAVEN 환경변수등록이필요함
+이클립스에 google cloud tools for eclipse 설치가필요함
+help > eclipse marketplace 에서 검색
+
+사용된인증json
+peak-hangout-275605-aed2fab96056.json
+
+API key(미사용)
+AIzaSyDlZN5vzeAKHYkUZM_J946_3rmhPNR6oFw
+
+환경변수설정 CMD에서 사용불가
+GOOGLE_APPLICATION_CREDENTIALS=C:\eclipse\project\capstone_An\lib\peak-hangout-275605-aed2fab96056.json
+
+설정방법참조
+https://jungwoon.github.io/google%20cloud/2018/01/17/Speech-Api/
+
+Maven프로젝트 불러오기
+https://javacan.tistory.com/entry/import-maven-project
+
+예제실행방법
+1. pom.xml 파일이있는곳으로이동
+cd C:\eclipse\project\capstone_An\lib\texttospeech\cloud-client
+
+2.패키지의 메인클래스를호출
+mvn package exec:java -Dexec.mainClass="com.example.texttospeech.QuickstartSample"
