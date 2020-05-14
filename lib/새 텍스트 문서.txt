@@ -4,6 +4,11 @@ MAVEN 환경변수등록이필요함
 이클립스에 google cloud tools for eclipse 설치가필요함
 help > eclipse marketplace 에서 검색
 
+이클립스에 인증json환경변수등록이필요함 (시스템환경변수와별도)
+실행할파일 우클릭 > run as > run configurations > Environment >
+이름GOOGLE_APPLICATION_CREDENTIALS
+경로C:\eclipse\project\capstone_An\lib\peak-hangout-275605-aed2fab96056.json
+
 사용된인증json
 peak-hangout-275605-aed2fab96056.json
 
