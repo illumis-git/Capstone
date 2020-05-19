@@ -34,7 +34,7 @@ import java.io.OutputStream;
  * -Dexec.mainClass='com.example.texttospeech.QuickstartSample'
  */
 public class QuickstartSample {
-	String input;
+	private String input;
   public String getInput() {
 		return input;
 	}

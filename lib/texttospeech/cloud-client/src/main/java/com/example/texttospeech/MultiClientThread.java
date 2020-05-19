@@ -6,17 +6,19 @@ import java.awt.Font;
 import java.util.Scanner;
 
 public class MultiClientThread extends Thread{
+	
     private MultiClient mc;
     
     public MultiClientThread(MultiClient mc){
         this.mc = mc;
     }
     
-    
+    QuickstartSample quickstartsample = new QuickstartSample();
+	
     public void run(){
         String message = null;
         String[] receivedMsg = null;
-        
+        quickstartsample.setInput(receivedMsg[0]);
         boolean isStop = false;
         while(!isStop){
             try{
