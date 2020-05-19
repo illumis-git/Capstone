@@ -34,20 +34,26 @@ import java.io.OutputStream;
  * -Dexec.mainClass='com.example.texttospeech.QuickstartSample'
  */
 public class QuickstartSample {
-
-  /** Demonstrates using the Text-to-Speech API. */
+	String input;
+  public String getInput() {
+		return input;
+	}
+	public void setInput(String input) {
+		this.input = input;
+	}
+/** Demonstrates using the Text-to-Speech API. */
   public static void main(String... args) throws Exception {
     // Instantiates a client
     try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
       // Set the text input to be synthesized
-      SynthesisInput input = SynthesisInput.newBuilder().setText("안녕하세요!").build();
+      SynthesisInput input = SynthesisInput.newBuilder().setText("good-job!").build();
 
       // Build the voice request, select the language code ("en-US") and the ssml voice gender
       // ("neutral")
       VoiceSelectionParams voice =
           VoiceSelectionParams.newBuilder()
-              .setLanguageCode("ko-KR")
-              .setSsmlGender(SsmlVoiceGender.FEMALE)
+              .setLanguageCode("en-US")
+              .setSsmlGender(SsmlVoiceGender.MALE)
               .build();
 
       // Select the type of audio file you want returned
