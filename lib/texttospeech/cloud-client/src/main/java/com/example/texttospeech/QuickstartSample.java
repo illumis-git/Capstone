@@ -34,7 +34,8 @@ import java.io.OutputStream;
  * -Dexec.mainClass='com.example.texttospeech.QuickstartSample'
  */
 public class QuickstartSample {
-	private String input;
+	
+	private static String input;
   public String getInput() {
 		return input;
 	}
@@ -46,13 +47,13 @@ public class QuickstartSample {
     // Instantiates a client
     try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
       // Set the text input to be synthesized
-      SynthesisInput input = SynthesisInput.newBuilder().setText("good-job!").build();
+      SynthesisInput input = SynthesisInput.newBuilder().setText(getInput()).build();
 
       // Build the voice request, select the language code ("en-US") and the ssml voice gender
       // ("neutral")
       VoiceSelectionParams voice =
           VoiceSelectionParams.newBuilder()
-              .setLanguageCode("en-US")
+              .setLanguageCode("ko-KR")
               .setSsmlGender(SsmlVoiceGender.MALE)
               .build();
 

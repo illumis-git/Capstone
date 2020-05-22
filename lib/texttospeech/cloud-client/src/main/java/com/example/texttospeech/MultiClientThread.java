@@ -18,12 +18,13 @@ public class MultiClientThread extends Thread{
     public void run(){
         String message = null;
         String[] receivedMsg = null;
-        quickstartsample.setInput(receivedMsg[0]);
+        
         boolean isStop = false;
         while(!isStop){
             try{
                 message = (String)mc.getOis().readObject();
                 receivedMsg = message.split("#");//내가 텍스트를 보낸다.
+                quickstartsample.setInput(receivedMsg[0]);
 
             }catch(Exception e){
                 e.printStackTrace();

@@ -4,6 +4,7 @@ package muti_network;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Scanner;
+import muti_network.TTS;
 
 public class MultiClientThread extends Thread{
     private MultiClient mc;
@@ -12,7 +13,7 @@ public class MultiClientThread extends Thread{
         this.mc = mc;
     }
     
-    
+ 
     public void run(){
         String message = null;
         String[] receivedMsg = null;
@@ -22,7 +23,8 @@ public class MultiClientThread extends Thread{
             try{
                 message = (String)mc.getOis().readObject();
                 receivedMsg = message.split("#");//내가 텍스트를 보낸다.
-
+                TTS tts = new TTS();
+                		tts.setInput(receivedMsg[0]);
             }catch(Exception e){
                 e.printStackTrace();
                 isStop = true;

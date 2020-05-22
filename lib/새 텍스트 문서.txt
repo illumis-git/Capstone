@@ -30,3 +30,8 @@ cd C:\eclipse\project\capstone_An\lib\texttospeech\cloud-client
 
 2.패키지의 메인클래스를호출
 mvn package exec:java -Dexec.mainClass="com.example.texttospeech.QuickstartSample"
+
+예제파일 (ex.texttospeech를 통째로 lib에 넣을 필요없이 클래스하나(ex.QuickstartSample.java)만으로도 실행가능
+먼저 프로젝트를 Maven프로젝트로변경해야함
+참조 https://hunit.tistory.com/191
+dependancy 설정이끝났으면 프로젝트를 maven으로 실행하고 clean package한번하면 import의 오류가 사라짐
