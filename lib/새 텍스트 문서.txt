@@ -35,3 +35,5 @@ mvn package exec:java -Dexec.mainClass="com.example.texttospeech.QuickstartSampl
 먼저 프로젝트를 Maven프로젝트로변경해야함
 참조 https://hunit.tistory.com/191
 dependancy 설정이끝났으면 프로젝트를 maven으로 실행하고 clean package한번하면 import의 오류가 사라짐
+
+package exec:java -Dexec.mainClass="muti_network.MultiClient"
