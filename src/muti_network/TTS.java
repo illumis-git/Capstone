@@ -35,13 +35,14 @@ import java.io.OutputStream;
  */
 public class TTS {
 	
-	private static String input;
+	private static String textinput;
   public static String getInput() {
-		return input;
+		return textinput;
 	}
 	public void setInput(String input) {
-		this.input = input;
+		this.textinput = input;
 	}
+	
 /** Demonstrates using the Text-to-Speech API. */
   public static void main(String... args) throws Exception {
     // Instantiates a client

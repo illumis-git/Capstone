@@ -25,6 +25,7 @@ public class MultiClientThread extends Thread{
                 receivedMsg = message.split("#");//내가 텍스트를 보낸다.
                 TTS tts = new TTS();
                 		tts.setInput(receivedMsg[0]);
+                		tts.main(null);
             }catch(Exception e){
                 e.printStackTrace();
                 isStop = true;
