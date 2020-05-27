@@ -36,7 +36,8 @@ import java.io.OutputStream;
 public class TTS {
 	
 	private static String textinput;
-  public static String getInput() {
+	
+public static String getInput() {
 		return textinput;
 	}
 	public void setInput(String input) {
@@ -69,12 +70,13 @@ public class TTS {
 
       // Get the audio contents from the response
       ByteString audioContents = response.getAudioContent();
-
+      
       // Write the response to the output file.
-      try (OutputStream out = new FileOutputStream("outpu3t.mp3")) {
+      try (OutputStream out = new FileOutputStream("output.mp3")) {
         out.write(audioContents.toByteArray());
-        System.out.println("Audio content written to file \"outpu3t.mp3\"");
+        System.out.println("Audio content written to file \"output.mp3\"");
       }
+      
     }
   }
 }

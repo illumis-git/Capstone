@@ -59,12 +59,12 @@ private JLabel jPW;
          }
       };
       jlo = new JTextArea(30,30); 
-      jlb1 = new JLabel() {//채팅방제목
+      jlb1 = new JLabel(getIp()) {//채팅방제목
          {
             setOpaque(false);
          }
       };
-      jlb2 = new JLabel("Ip : " + ip) {
+      jlb2 = new JLabel("Ip : " + getIp()) {
          {
             setOpaque(true);
          }
@@ -180,8 +180,8 @@ private JLabel jPW;
          jframe.setVisible(true);
          login1.setVisible(false);
 
-         ip = idc.getText();
-         id = pass.getText();
+         setIp(idc.getText());
+         SetName(pass.getText());
       }
       
       if (str.equals("exit")){
@@ -227,7 +227,15 @@ private JLabel jPW;
       }
    }
 
-   public void exit() {
+   public String getIp() {
+	return ip;
+}
+
+public void setIp(String ip) {
+	this.ip = ip;
+}
+
+public void exit() {
       System.exit(0);
    }
    

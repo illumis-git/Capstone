@@ -47,7 +47,7 @@ public class QuickstartSample {
     // Instantiates a client
     try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
       // Set the text input to be synthesized
-      SynthesisInput input = SynthesisInput.newBuilder().setText(getInput()).build();
+      SynthesisInput input = SynthesisInput.newBuilder().setText("텍스트").build();
 
       // Build the voice request, select the language code ("en-US") and the ssml voice gender
       // ("neutral")

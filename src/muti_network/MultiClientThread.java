@@ -3,8 +3,16 @@ package muti_network;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Scanner;
+
+
+
 import muti_network.TTS;
+
+
 
 public class MultiClientThread extends Thread{
     private MultiClient mc;
@@ -23,9 +31,12 @@ public class MultiClientThread extends Thread{
             try{
                 message = (String)mc.getOis().readObject();
                 receivedMsg = message.split("#");//내가 텍스트를 보낸다.
+                
                 TTS tts = new TTS();
-                		tts.setInput(receivedMsg[0]);
+                		tts.setInput(receivedMsg[0] + "의 메세지입니다." + receivedMsg[1]);
                 		tts.main(null);
+                		
+                		//if(receivedMsg[0].equals(anObject))
             }catch(Exception e){
                 e.printStackTrace();
                 isStop = true;
