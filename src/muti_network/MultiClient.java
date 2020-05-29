@@ -50,27 +50,32 @@ private JLabel jPW;
       jta = new JTextArea(43, 43) {
          {
             setOpaque(false);
-            setFont(new Font("나눔바른고딕", Font.PLAIN, (int)10));
+            setFont(new Font("나눔바른고딕", Font.PLAIN, (int)15));
+            setForeground(new Color(0, 0, 0));
+            setBackground(new Color(35, 249, 64));
+            
          }
 
          public void paintComponent(Graphics g) {
-            g.drawImage(img, 0, 0, null);
+            
+            g.drawImage(img, 0, 0, jta.getWidth(), jta.getHeight(), null);//이미지, X좌표, Y좌표, 가로크기, 세로크기, oberver
+           
             super.paintComponent(g);
          }
       };
       jlo = new JTextArea(30,30); 
-      jlb1 = new JLabel(getIp()) {//채팅방제목
+      jlb1 = new JLabel("") {//채팅방제목
          {
             setOpaque(false);
          }
       };
-      jlb2 = new JLabel("Ip : " + getIp()) {
+      jlb2 = new JLabel("나 : ") {
          {
             setOpaque(true);
          }
       };
-      jID = new JLabel("방제목"); //ID 라벨
-      jPW = new JLabel("닉네임"); //패스워드 라벨
+      jID = new JLabel("상대방이름"); //ID 라벨
+      jPW = new JLabel("내이름"); //패스워드 라벨
       jbtn = new JButton("Enter"); // 채팅전송 버튼
       jbtn1 = new JButton("Login"); //로그인 버튼
       jexit = new JButton("exit"); //종료 버튼
@@ -80,8 +85,8 @@ private JLabel jPW;
       jp4 = new JPanel();
       jbtn.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 20));
       jlb1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
-      jlb1.setBackground(new Color(242, 159, 5));
-      jlb2.setBackground(new Color(242, 159, 5));
+      jlb1.setBackground(new Color(46, 242, 183));
+      jlb2.setBackground(new Color(46, 242, 183));
       jlb2.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 15));
       
       jID.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
@@ -93,12 +98,12 @@ private JLabel jPW;
       idc.setBackground(Color.WHITE);
       pass.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       pass.setBackground(Color.WHITE);
-      jbtn1.setBackground(new Color(242, 159, 5));
+      jbtn1.setBackground(new Color(79, 232, 44));
       jbtn1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
-      jexit.setBackground(new Color(242, 159, 5));
+      jexit.setBackground(new Color(79, 232, 44));
       jexit.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
-      jbtn.setBackground(new Color(242, 159, 5));
-      jlo.setBackground(new Color(242, 159, 5));
+      jbtn.setBackground(new Color(79, 232, 44));
+      jlo.setBackground(new Color(79, 232, 44));
       
       jp1.setLayout(new BorderLayout());
       jp2.setLayout(new BorderLayout());
@@ -109,10 +114,10 @@ private JLabel jPW;
       jp2.add(jlb1, BorderLayout.CENTER);
       jp2.add(jlb2, BorderLayout.EAST);
       
-      jp1.setBackground(new Color(4, 191, 123));
-      jp2.setBackground(new Color(242, 159, 5));
+      jp1.setBackground(new Color(52, 219, 122));
+      jp2.setBackground(new Color(46, 242, 183));
       //채팅방 상단 색
-      jp3.setBackground(new Color(4, 191, 123));
+      jp3.setBackground(new Color(52, 219, 122));
       jp3.add(jID);
       jp3.add(idc);
       jp3.add(jPW);
@@ -181,7 +186,9 @@ private JLabel jPW;
          login1.setVisible(false);
 
          setIp(idc.getText());
-         SetName(pass.getText());
+         SetName(pass.getText().toString());
+         jlb1.setText("수신자 : " + getIp());
+         jlb2.setText("송신자 : " + getId());
       }
       
       if (str.equals("exit")){
@@ -279,6 +286,6 @@ public void exit() {
 	}
    
    public void My(){
-	   jta.setDisabledTextColor(Color.blue);
+	   jta.setDisabledTextColor(Color.black);
    }
 }

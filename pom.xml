@@ -20,6 +20,13 @@
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-texttospeech</artifactId>
   </dependency>
+  <dependency>
+            <groupId>jacomp3player.sourceforget.net</groupId>
+            <artifactId>jaco</artifactId>
+            <version>0.9.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jaco-mp3-player-0.9.3.jar</systemPath> <!-- 자리이동하면 자기컴퓨터의 jaco-mp3-player경로를 잡아서 업데이트 -->
+        </dependency>
 </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>

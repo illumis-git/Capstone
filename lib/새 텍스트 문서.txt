@@ -36,4 +36,16 @@ mvn package exec:java -Dexec.mainClass="com.example.texttospeech.QuickstartSampl
 참조 https://hunit.tistory.com/191
 dependancy 설정이끝났으면 프로젝트를 maven으로 실행하고 clean package한번하면 import의 오류가 사라짐
 
+제대로 오류없이 clean package가 실행되어 필요한 maven package가설치되었다면 그냥이클립스 RUN으로도 정상작동한다. 내삽질돌려줘.
 package exec:java -Dexec.mainClass="muti_network.MultiClient"
+
+주의!
+라이브러리를 추가한경우 MAVEN POM에 추가한라이브러리를작성하고 해당라이브러리.jar 파일의경로를잡아주어야한다.
+예제
+<dependency>
+            <groupId>jacomp3player.sourceforget.net</groupId>
+            <artifactId>jaco</artifactId>
+            <version>0.9.3</version>
+            <scope>system</scope>
+            <systemPath>C:\workspace\Capstone\lib\jaco-mp3-player-0.9.3.jar</systemPath> <!-- 자리이동하면 자기컴퓨터의 jaco-mp3-player경로를 잡아서 업데이트할것. -->
+        </dependency>
