@@ -226,7 +226,7 @@ private JLabel jPW;
          }
       } else if (obj == jbtn) {
          try {
-            oos.writeObject(id + "#"+jtf.getText().toString()); //어째서 엔터가 종료버튼으로동작하는가
+            oos.writeObject(id + "#"+jtf.getText().toString()); //어째서 엔터가 종료버튼으로동작하는가 해결
             jtf.setText("");
          } catch (IOException ee) {
             ee.printStackTrace();
