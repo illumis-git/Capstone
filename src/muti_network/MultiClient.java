@@ -30,6 +30,7 @@ private JLabel jPW;
    private boolean login = false;
    
    Image img = new ImageIcon("채팅방.jpg").getImage();
+  
    //위치=workspace.Capstone
    public MultiClient() {
       /*ip = argIp;
@@ -124,23 +125,23 @@ private JLabel jPW;
       jp3.add(pass);
       jp3.add(jbtn1);
       jp3.add(jexit);
-      jframe.add(jp1, BorderLayout.SOUTH);
-      jframe.add(jp2, BorderLayout.NORTH);
-      login1.add(jp3, BorderLayout.EAST);
-      login1.add(jp4, BorderLayout.EAST);
+      jframe.getContentPane().add(jp1, BorderLayout.SOUTH);
+      jframe.getContentPane().add(jp2, BorderLayout.NORTH);
+      login1.getContentPane().add(jp3, BorderLayout.EAST);
+      login1.getContentPane().add(jp4, BorderLayout.EAST);
       
       JScrollPane jsp = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-      jframe.add(jsp, BorderLayout.CENTER);
+      jframe.getContentPane().add(jsp, BorderLayout.CENTER);
       JScrollPane jsp1 = new JScrollPane(jlo, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-      login1.add(jp3, BorderLayout.CENTER);
+      login1.getContentPane().add(jp3, BorderLayout.CENTER);
 
       jtf.addActionListener(this); // 노건들
       jbtn.addActionListener(this);
       jexit.addActionListener(this);
       
-      jframe.addWindowListener(new WindowAdapter() {
+      jframe.addWindowListener(new WindowAdapter() { //exit 버튼 작동
          public void windowClosing(WindowEvent e) {
             try {
                oos.writeObject(id + "#exit");
