@@ -28,6 +28,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import java.awt.Component;
+import javax.swing.JScrollBar;
+import javax.swing.JList;
 
 public class Memogui extends JFrame {
 
@@ -97,9 +99,23 @@ public class Memogui extends JFrame {
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
 		contentPane.add(tabbedPane);
-
-		JScrollPane scrollPane = new JScrollPane();
-		tabbedPane.addTab("목록", null, scrollPane, null);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("New tab", null, panel, null);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		
+		JList list = new JList();
+		panel.add(list);
+		
+		JButton btnNewButton_6 = new JButton("New button");
+		btnNewButton_6.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("New button");
+		btnNewButton_7.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		btnNewButton_7.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel.add(btnNewButton_7);
+		
 
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("메모", null, panel_1, null);
