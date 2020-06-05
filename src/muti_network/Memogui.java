@@ -181,7 +181,14 @@ public class Memogui extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tts.setInput(textField.getText() + textArea.getText());
-
+				TTS.setOutputfilename(textField.getText());
+				tts.setAudiosavepath(fl.getConfigtoaudiopath());
+				try {
+					tts.main(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel_2.add(btnNewButton_3);
@@ -194,7 +201,7 @@ public class Memogui extends JFrame {
 				String savename = textField.getText() + ".txt";
 
 				try {
-					output = new FileOutputStream(savename);
+					output = new FileOutputStream(fl.getConfigtotxtpath()+"\\"+textField.getText()+".txt");
 
 					String savestring = "제목 : " + textField.getText() + "\n" + "본문 : " + textArea.getText();
 					byte[] savebytearray = savestring.getBytes();
@@ -224,7 +231,7 @@ public class Memogui extends JFrame {
 		JLabel lblNewLabel = new JLabel("메모파일 경로 : ");
 		panel_4.add(lblNewLabel);
 
-		textField_1 = new JTextField(txtfilesearch);
+		textField_1 = new JTextField(fl.getConfigtotxtpath());
 		panel_4.add(textField_1);
 		textField_1.setColumns(10);
 
@@ -234,7 +241,7 @@ public class Memogui extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("음성파일 경로 : ");
 		panel_5.add(lblNewLabel_1);
 
-		textField_2 = new JTextField(audiofilesearch);
+		textField_2 = new JTextField(fl.getConfigtoaudiopath());
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
 
@@ -263,6 +270,7 @@ public class Memogui extends JFrame {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+						fl.getConfig();
 
 					}
 				});

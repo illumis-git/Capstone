@@ -30,60 +30,70 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 /**
- * Google Cloud TextToSpeech API sample application. Example usage: mvn package exec:java
- * -Dexec.mainClass='com.example.texttospeech.QuickstartSample'
+ * Google Cloud TextToSpeech API sample application. Example usage: mvn package
+ * exec:java -Dexec.mainClass='com.example.texttospeech.QuickstartSample'
  */
 public class TTS {
-	
+
 	private static String textinput;
 	private static String outputfilename = "output";
-public static String getOutputfilename() {
+	static String audiosavepath = ".";
+
+	public static String getAudiosavepath() {
+		return audiosavepath;
+	}
+
+	public void setAudiosavepath(String audiosavepath) {
+		TTS.audiosavepath = audiosavepath;
+	}
+
+	public static String getOutputfilename() {
 		return outputfilename;
 	}
+
 	public static void setOutputfilename(String outputfilename) {
-		TTS.outputfilename = outputfilename+".mp3";
+		TTS.outputfilename = outputfilename;
 	}
-public static String getInput() {
+
+	public static String getInput() {
 		return textinput;
 	}
+
 	public void setInput(String input) {
-		this.textinput = input;
+		TTS.textinput = input;
 	}
-	
-/** Demonstrates using the Text-to-Speech API. */
-  public static void main(String... args) throws Exception {
-    // Instantiates a client
-    try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
-      // Set the text input to be synthesized
-      SynthesisInput input = SynthesisInput.newBuilder().setText(getInput()).build();
 
-      // Build the voice request, select the language code ("en-US") and the ssml voice gender
-      // ("neutral")
-      VoiceSelectionParams voice =
-          VoiceSelectionParams.newBuilder()
-              .setLanguageCode("ko-KR")
-              .setSsmlGender(SsmlVoiceGender.MALE)
-              .build();
+	/** Demonstrates using the Text-to-Speech API. */
+	public static void main(String... args) throws Exception {
+		// Instantiates a client
+		try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
+			// Set the text input to be synthesized
+			SynthesisInput input = SynthesisInput.newBuilder().setText(getInput()).build();
 
-      // Select the type of audio file you want returned
-      AudioConfig audioConfig =
-          AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
+			// Build the voice request, select the language code ("en-US") and the ssml
+			// voice gender
+			// ("neutral")
+			VoiceSelectionParams voice = VoiceSelectionParams.newBuilder().setLanguageCode("ko-KR")
+					.setSsmlGender(SsmlVoiceGender.MALE).build();
 
-      // Perform the text-to-speech request on the text input with the selected voice parameters and
-      // audio file type
-      SynthesizeSpeechResponse response =
-          textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
+			// Select the type of audio file you want returned
+			AudioConfig audioConfig = AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
 
-      // Get the audio contents from the response
-      ByteString audioContents = response.getAudioContent();
-      
-      // Write the response to the output file.
-      try (OutputStream out = new FileOutputStream(getOutputfilename())) {
-        out.write(audioContents.toByteArray());
-        System.out.println("Audio content written to file \"output.mp3\"");
-      }
-      
-    }
-  }
+			// Perform the text-to-speech request on the text input with the selected voice
+			// parameters and
+			// audio file type
+			SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
+
+			// Get the audio contents from the response
+			ByteString audioContents = response.getAudioContent();
+
+			// Write the response to the output file.
+			try (OutputStream out = new FileOutputStream(getAudiosavepath() + getOutputfilename() + ".mp3")) {
+				out.write(audioContents.toByteArray());
+				System.out.println("Audio content written to file \"output.mp3\""+getAudiosavepath()+getOutputfilename()+".mp3");
+			}
+
+		}
+	}
 }
 // [END tts_quickstart]

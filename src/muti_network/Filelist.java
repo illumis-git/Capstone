@@ -19,7 +19,7 @@ public class Filelist {
 	}
 
 	public void setConfigtotxtpath(String configtotxtpah) {
-		this.configtotxtpath = configtotxtpah;
+		this.configtotxtpath = configtotxtpah.replace("메모파일 경로 : ", "");
 	}
 
 	public String getConfigtoaudiopath() {
@@ -27,7 +27,7 @@ public class Filelist {
 	}
 
 	public void setConfigtoaudiopath(String configtoaudiopath) {
-		this.configtoaudiopath = configtoaudiopath;
+		this.configtoaudiopath = configtoaudiopath.replace("음성파일 경로 : ", "");
 	}
 
 	int k = 0;
