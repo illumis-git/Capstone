@@ -36,12 +36,12 @@ import java.io.OutputStream;
 public class TTS {
 	
 	private static String textinput;
-	private static String outputfilename = "output.mp3";
+	private static String outputfilename = "output";
 public static String getOutputfilename() {
 		return outputfilename;
 	}
 	public static void setOutputfilename(String outputfilename) {
-		TTS.outputfilename = outputfilename;
+		TTS.outputfilename = outputfilename+".mp3";
 	}
 public static String getInput() {
 		return textinput;
