@@ -26,6 +26,8 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
+import java.awt.Component;
 
 public class Memogui extends JFrame {
 
@@ -227,6 +229,7 @@ public class Memogui extends JFrame {
 
 		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4);
+		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
 
 		JLabel lblNewLabel = new JLabel("메모파일 경로 : ");
 		panel_4.add(lblNewLabel);
@@ -234,9 +237,22 @@ public class Memogui extends JFrame {
 		textField_1 = new JTextField(fl.getConfigtotxtpath());
 		panel_4.add(textField_1);
 		textField_1.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("설정하기");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JfileChooserUtil jcu = new JfileChooserUtil();
+				jcu.setWhat("텍스트파일 저장경로를 설정해주세요");
+				String str = JfileChooserUtil.jFileChooserUtil();
+				textField_1.setText(str);
+			}
+		});
+		panel_4.add(btnNewButton_1);
+	
 
 		JPanel panel_5 = new JPanel();
 		panel_3.add(panel_5);
+		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 
 		JLabel lblNewLabel_1 = new JLabel("음성파일 경로 : ");
 		panel_5.add(lblNewLabel_1);
@@ -244,6 +260,17 @@ public class Memogui extends JFrame {
 		textField_2 = new JTextField(fl.getConfigtoaudiopath());
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
+		
+		JButton btnNewButton_5 = new JButton("설정하기");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JfileChooserUtil jcu = new JfileChooserUtil();
+				jcu.setWhat("텍스트파일 저장경로를 설정해주세요");
+				String str = JfileChooserUtil.jFileChooserUtil();
+				textField_2.setText(str);
+			}
+		});
+		panel_5.add(btnNewButton_5);
 
 		JPanel panel_6 = new JPanel();
 		panel_3.add(panel_6);
