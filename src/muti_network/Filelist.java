@@ -13,6 +13,24 @@ public class Filelist {
 	String[] fileread;
 	String configtotxtpath;
 	String configtoaudiopath;
+	String firstline = "";
+	public String getFirstline() {
+		return firstline;
+	}
+
+	public void setFirstline(String firstline) {
+		this.firstline = firstline;
+	}
+
+	public String getSecondingline() {
+		return secondingline;
+	}
+
+	public void setSecondingline(String secondingline) {
+		this.secondingline = this.secondingline +"\n"+ secondingline;
+	}
+
+	String secondingline = "";
 
 	public String getConfigtotxtpath() {
 		return configtotxtpath;
@@ -65,7 +83,7 @@ public class Filelist {
 				if (file.isFile()) {
 					if (file.getName().contains(".txt")) {
 						// 파일이 있다면 파일 이름 출력
-						setFilename(k, file.getName() + "아마 하나만 나오겠지?");
+						setFilename(k, file.getName());
 						setFileread(k, file.getAbsolutePath());
 						System.out.println(getFilename(k));
 						System.out.println(getFileread(k));
@@ -82,7 +100,7 @@ public class Filelist {
 					 * // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
 					 * 
 					 * subDirList(file.getCanonicalPath().toString());
-					 * 
+					 * 2차원배열로만들면될것같다.
 					 * }
 					 */
 
@@ -133,6 +151,34 @@ public class Filelist {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		}
+	}
+	public void gettxt(String str) {
+		
+		String line = "";
+		
+		try {
+			int i=0;
+			File configpath = new File(str);
+			FileReader filereader = new FileReader(configpath);
+			BufferedReader bufReader = new BufferedReader(filereader);
+			while ((line = bufReader.readLine()) != null) {
+				if (i==0) {
+				setFirstline(line);
+				i++;
+				}
+				if (i==1) {
+					setSecondingline(line);
+					
+				}
+			}
+			// .readLine()은 끝에 개행문자를 읽지 않는다.
+			bufReader.close();
+
+			// 출처: https://jeong-pro.tistory.com/69 [기본기를 쌓는 정아마추어 코딩블로그]
+
+		} catch (IOException e) {
+			
 		}
 	}
 	/*

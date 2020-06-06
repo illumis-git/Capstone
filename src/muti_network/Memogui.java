@@ -30,6 +30,10 @@ import javax.swing.BoxLayout;
 import java.awt.Component;
 import javax.swing.JScrollBar;
 import javax.swing.JList;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.SwingConstants;
 
 public class Memogui extends JFrame {
 
@@ -96,25 +100,10 @@ public class Memogui extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
-
+		GridBagConstraints gbc = new GridBagConstraints();
+		 gbc.insets = new Insets(4,4,4,4);
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
 		contentPane.add(tabbedPane);
-		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("New tab", null, panel, null);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		
-		JList list = new JList();
-		panel.add(list);
-		
-		JButton btnNewButton_6 = new JButton("New button");
-		btnNewButton_6.setAlignmentY(Component.TOP_ALIGNMENT);
-		panel.add(btnNewButton_6);
-		
-		JButton btnNewButton_7 = new JButton("New button");
-		btnNewButton_7.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		btnNewButton_7.setAlignmentY(Component.TOP_ALIGNMENT);
-		panel.add(btnNewButton_7);
 		
 
 		JPanel panel_1 = new JPanel();
@@ -209,9 +198,32 @@ public class Memogui extends JFrame {
 				}
 			}
 		});
+		
+		JButton btnNewButton_6 = new JButton("불러오기");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JfileChooserUtil jcu = new JfileChooserUtil();
+				Filelist fl = new Filelist();
+				fl.getConfig();
+				jcu.setPath(fl.getConfigtotxtpath());
+				jcu.setWhat("불러올 메모파일을 선택해주세요");
+				String str = jcu.jFileChooserUtilfile();
+				if (str.equals("")) {
+					System.out.println("취소하셨습니다");
+				} else {
+					textField.setFont(gainfont);
+					textArea.setFont(gainfontmain);
+					fl.gettxt(str);
+				textField.setText(fl.getFirstline());
+				textArea.setText(fl.secondingline);
+				}
+				
+			}
+		});
+		panel_2.add(btnNewButton_6);
 		panel_2.add(btnNewButton_3);
 
-		JButton btnNewButton_4 = new JButton("저장");
+		JButton btnNewButton_4 = new JButton("텍스트저장");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			private OutputStream output;
 
@@ -221,7 +233,7 @@ public class Memogui extends JFrame {
 				try {
 					output = new FileOutputStream(fl.getConfigtotxtpath()+"\\"+textField.getText()+".txt");
 
-					String savestring = "제목 : " + textField.getText() + "\n" + "본문 : " + textArea.getText();
+					String savestring = textField.getText() + "\n" + textArea.getText();
 					byte[] savebytearray = savestring.getBytes();
 					try {
 
@@ -258,7 +270,10 @@ public class Memogui extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JfileChooserUtil jcu = new JfileChooserUtil();
+				Filelist  fl = new Filelist();
+				
 				jcu.setWhat("텍스트파일 저장경로를 설정해주세요");
+				jcu.setPath(fl.getConfigtotxtpath());
 				String str = JfileChooserUtil.jFileChooserUtil();
 				textField_1.setText(str);
 			}
@@ -280,8 +295,10 @@ public class Memogui extends JFrame {
 		JButton btnNewButton_5 = new JButton("설정하기");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Filelist fl = new Filelist();
 				JfileChooserUtil jcu = new JfileChooserUtil();
-				jcu.setWhat("텍스트파일 저장경로를 설정해주세요");
+				jcu.setPath(fl.getConfigtoaudiopath());
+				jcu.setWhat("음성파일 저장경로를 설정해주세요");
 				String str = JfileChooserUtil.jFileChooserUtil();
 				textField_2.setText(str);
 			}
