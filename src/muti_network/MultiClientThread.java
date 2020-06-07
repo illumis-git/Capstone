@@ -78,21 +78,18 @@ public class MultiClientThread extends Thread {
 				mc.getJta().append("이 메시지는 부적절합니다." + System.getProperty("line.separator"));
 
 			} else { // 상대방이보낸걸 보여줌
-				if (receivedMsg[0].equals(mc.getId())) {
-					mc.getJta().append(receivedMsg[0] + " : " + receivedMsg[1] + System.getProperty("line.separator"));
-					mc.getJta().setCaretPosition(mc.getJta().getDocument().getLength());
-					TTS tts = new TTS();
-					tts.setInput(receivedMsg[0] + "의 메세지입니다.                            " + receivedMsg[1]);
-					try {
-						tts.main(null);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					new MP3Player(new File("output.mp3")).play();
-				} else {
-					//내가 지정한 상대의 텍스트가아니면 화면에 보여주지않는다.
+				mc.getJta().append(receivedMsg[0] + " : " + receivedMsg[1] + System.getProperty("line.separator"));
+				mc.getJta().setCaretPosition(mc.getJta().getDocument().getLength());
+				TTS tts = new TTS();
+				tts.setInput(receivedMsg[0] + "의 메세지입니다.                            " + receivedMsg[1]);
+				try {
+					tts.main(null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				new MP3Player(new File("output.mp3")).play();
+
 			}
 		}
 	}

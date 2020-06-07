@@ -24,10 +24,11 @@ private JLabel jPW;
    private JPanel jp1, jp2, jp3, jp4;//버튼등등 담아서 프레임에 붙이는 바구니
    private String ip;//로그인할수있는 아이피
    private String id;//로그인할수있는 아이디
-   private JButton jbtn, jbtn1 , jexit;//전송버튼이랑 로그인 종료 버튼이에요
+   private JButton jbtn, jbtn1 , jmemo;//전송버튼이랑 로그인 종료 버튼이에요
    public boolean changepower = false;
    public boolean saypower = false;
    private boolean login = false;
+   Memogui Mg = new Memogui();
    
    Image img = new ImageIcon("채팅방.jpg").getImage();
   
@@ -77,9 +78,9 @@ private JLabel jPW;
       };
       jID = new JLabel("상대방이름"); //ID 라벨
       jPW = new JLabel("내이름"); //패스워드 라벨
-      jbtn = new JButton("Enter"); // 채팅전송 버튼
+      jbtn = new JButton("전송"); // 채팅전송 버튼
       jbtn1 = new JButton("Login"); //로그인 버튼
-      jexit = new JButton("exit"); //종료 버튼
+      jmemo = new JButton("Memo"); //종료 버튼
       jp1 = new JPanel(); // 바구니
       jp2 = new JPanel();
       jp3 = new JPanel();  //로그인 화면
@@ -101,8 +102,8 @@ private JLabel jPW;
       pass.setBackground(Color.WHITE);
       jbtn1.setBackground(new Color(79, 232, 44));
       jbtn1.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
-      jexit.setBackground(new Color(79, 232, 44));
-      jexit.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
+      jmemo.setBackground(new Color(79, 232, 44));
+      jmemo.setFont(new Font("나눔바른고딕", Font.PLAIN, (int) 30));
       jbtn.setBackground(new Color(79, 232, 44));
       jlo.setBackground(new Color(79, 232, 44));
       
@@ -124,7 +125,7 @@ private JLabel jPW;
       jp3.add(jPW);
       jp3.add(pass);
       jp3.add(jbtn1);
-      jp3.add(jexit);
+      jp3.add(jmemo);
       jframe.getContentPane().add(jp1, BorderLayout.SOUTH);
       jframe.getContentPane().add(jp2, BorderLayout.NORTH);
       login1.getContentPane().add(jp3, BorderLayout.EAST);
@@ -139,7 +140,7 @@ private JLabel jPW;
 
       jtf.addActionListener(this); // 노건들
       jbtn.addActionListener(this);
-      jexit.addActionListener(this);
+      jmemo.addActionListener(this);
       
       jframe.addWindowListener(new WindowAdapter() { //exit 버튼 작동
          public void windowClosing(WindowEvent e) {
@@ -165,13 +166,14 @@ private JLabel jPW;
       int screenWidth = d.width;
       
       jframe.pack();
+      jframe.setSize(500, 300); //테스트용
       jframe.setLocation((screenWidth - jframe.getWidth()) / 2, (screenHeight - jframe.getHeight()) / 2);
       jframe.setResizable(true); //채팅창 크기조정
       jframe.setVisible(false);
 
       login1.pack();
       login1.setSize(800, 300);
-      login1.setLocation((screenWidth - jframe.getWidth()) / 2, (screenHeight - jframe.getHeight()) / 2);
+      login1.setLocation((screenWidth - jframe.getWidth()) / 2, (screenHeight - jframe.getHeight()) / 2+330); //로그인창 위치조정
       login1.setResizable(true); //로그인창 크기조정
       login1.setVisible(true);
    }
@@ -192,8 +194,10 @@ private JLabel jPW;
          jlb2.setText("송신자 : " + getId());
       }
       
-      if (str.equals("exit")){
-         System.exit(0);
+      if (str.equals("Memo")){
+    	 jframe.setVisible(false);
+    	 login1.setVisible(false);
+         Mg.main(null);;
       }
       
       if (obj == jtf && changepower == true) {

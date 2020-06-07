@@ -43,9 +43,10 @@ public class Memogui extends JFrame {
 	private JTextField textField_2;
 	File txtfile = new File(".");
 	File audiofile = new File(".");
-	public static Filelist fl;
-	
+	public static Filelist fl = new Filelist();
+
 	String txtfilesearch = txtfile.getAbsolutePath();
+
 	public String getTxtfilesearch() {
 		return txtfilesearch;
 	}
@@ -87,11 +88,12 @@ public class Memogui extends JFrame {
 	 * Create the frame.
 	 */
 	public Memogui() {
+		setTitle("Memo-to-Speech");
 		TTS tts = new TTS();
 		String headhint = "제목";
 		String mainhint = "본문";
 
-		Font gainfont = new Font("나눔고딕", Font.PLAIN, 18);
+		Font gainfont = new Font("나눔고딕", Font.PLAIN, 22);
 		Font lostfont = new Font("나눔고딕", Font.ITALIC, 18);
 		Font gainfontmain = new Font("나눔고딕", Font.PLAIN, 20);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,10 +103,9 @@ public class Memogui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		GridBagConstraints gbc = new GridBagConstraints();
-		 gbc.insets = new Insets(4,4,4,4);
+		gbc.insets = new Insets(4, 4, 4, 4);
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
 		contentPane.add(tabbedPane);
-		
 
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("메모", null, panel_1, null);
@@ -198,7 +199,7 @@ public class Memogui extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnNewButton_6 = new JButton("불러오기");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,14 +211,22 @@ public class Memogui extends JFrame {
 				String str = jcu.jFileChooserUtilfile();
 				if (str.equals("")) {
 					System.out.println("취소하셨습니다");
+					if (textField.getText().equals("제목") && textArea.getText().equals("본문")) {
+						textField.setFont(lostfont);
+						textField.setForeground(Color.GRAY);
+						textArea.setFont(lostfont);
+						textArea.setForeground(Color.GRAY);
+					}
 				} else {
 					textField.setFont(gainfont);
+					textField.setForeground(Color.BLACK);
 					textArea.setFont(gainfontmain);
+					textArea.setForeground(Color.BLACK);
 					fl.gettxt(str);
-				textField.setText(fl.getFirstline());
-				textArea.setText(fl.secondingline);
+					textField.setText(fl.getFirstline());
+					textArea.setText(fl.secondingline);
 				}
-				
+
 			}
 		});
 		panel_2.add(btnNewButton_6);
@@ -231,7 +240,7 @@ public class Memogui extends JFrame {
 				String savename = textField.getText() + ".txt";
 
 				try {
-					output = new FileOutputStream(fl.getConfigtotxtpath()+"\\"+textField.getText()+".txt");
+					output = new FileOutputStream(fl.getConfigtotxtpath() + "\\" + textField.getText() + ".txt");
 
 					String savestring = textField.getText() + "\n" + textArea.getText();
 					byte[] savebytearray = savestring.getBytes();
@@ -265,21 +274,25 @@ public class Memogui extends JFrame {
 		textField_1 = new JTextField(fl.getConfigtotxtpath());
 		panel_4.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JButton btnNewButton_1 = new JButton("설정하기");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JfileChooserUtil jcu = new JfileChooserUtil();
-				Filelist  fl = new Filelist();
-				
+				Filelist fl = new Filelist();
+				fl.getConfig();
+
 				jcu.setWhat("텍스트파일 저장경로를 설정해주세요");
 				jcu.setPath(fl.getConfigtotxtpath());
 				String str = JfileChooserUtil.jFileChooserUtil();
-				textField_1.setText(str);
+				if (str.equals("")) {
+
+				} else {
+					textField_1.setText(str);
+				}
 			}
 		});
 		panel_4.add(btnNewButton_1);
-	
 
 		JPanel panel_5 = new JPanel();
 		panel_3.add(panel_5);
@@ -291,16 +304,22 @@ public class Memogui extends JFrame {
 		textField_2 = new JTextField(fl.getConfigtoaudiopath());
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
-		
+
 		JButton btnNewButton_5 = new JButton("설정하기");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Filelist fl = new Filelist();
+				fl.getConfig();
+
 				JfileChooserUtil jcu = new JfileChooserUtil();
 				jcu.setPath(fl.getConfigtoaudiopath());
 				jcu.setWhat("음성파일 저장경로를 설정해주세요");
 				String str = JfileChooserUtil.jFileChooserUtil();
-				textField_2.setText(str);
+				if (str.equals("")) {
+
+				} else {
+					textField_2.setText(str);
+				}
 			}
 		});
 		panel_5.add(btnNewButton_5);
@@ -308,32 +327,32 @@ public class Memogui extends JFrame {
 		JPanel panel_6 = new JPanel();
 		panel_3.add(panel_6);
 		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-				JButton btnNewButton = new JButton("설정 저장");
-				panel_6.add(btnNewButton);
-				btnNewButton.addActionListener(new ActionListener() {
-					private OutputStream output;
 
-					public void actionPerformed(ActionEvent e) {
-						try {
-							output = new FileOutputStream("."+"memconfig");
-							String str = "메모파일 경로 : " + textField_1.getText() + "\n" + "음성파일 경로 : " + textField_2.getText();
-							byte[] configby = str.getBytes();
-							try {
-								output.write(configby);
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+		JButton btnNewButton = new JButton("설정 저장");
+		panel_6.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			private OutputStream output;
 
-						} catch (FileNotFoundException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						fl.getConfig();
-
+			public void actionPerformed(ActionEvent e) {
+				try {
+					output = new FileOutputStream("." + "memconfig");
+					String str = "메모파일 경로 : " + textField_1.getText() + "\n" + "음성파일 경로 : " + textField_2.getText();
+					byte[] configby = str.getBytes();
+					try {
+						output.write(configby);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-				});
+
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				fl.getConfig();
+
+			}
+		});
 
 		JButton btnNewButton_2 = new JButton("초기화");
 		btnNewButton_2.addActionListener(new ActionListener() {
