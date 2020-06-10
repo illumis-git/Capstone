@@ -27,13 +27,19 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.JScrollBar;
 import javax.swing.JList;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.DropMode;
 
 public class Memogui extends JFrame {
 
@@ -44,6 +50,7 @@ public class Memogui extends JFrame {
 	File txtfile = new File(".");
 	File audiofile = new File(".");
 	public static Filelist fl = new Filelist();
+	ImageIcon folder = new ImageIcon("icon/search.png");
 
 	String txtfilesearch = txtfile.getAbsolutePath();
 
@@ -88,6 +95,7 @@ public class Memogui extends JFrame {
 	 * Create the frame.
 	 */
 	public Memogui() {
+		setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		setTitle("Memo-to-Speech");
 		TTS tts = new TTS();
 		String headhint = "제목";
@@ -97,7 +105,8 @@ public class Memogui extends JFrame {
 		Font lostfont = new Font("나눔고딕", Font.ITALIC, 18);
 		Font gainfontmain = new Font("나눔고딕", Font.PLAIN, 20);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setMinimumSize(new Dimension(364, 0)); //창 최소크기 상황따라서제거할수도..
+		setBounds(100, 100, 364, 502);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -108,7 +117,10 @@ public class Memogui extends JFrame {
 		contentPane.add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("메모", null, panel_1, null);
+		tabbedPane.addTab("메모",
+				new ImageIcon(Memogui.class
+						.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Paste-Black.png")),
+				panel_1, null);
 		textField = new JTextField();
 		textField.setText(headhint);
 		textField.setFont(lostfont);
@@ -146,12 +158,14 @@ public class Memogui extends JFrame {
 		textField.setColumns(10);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel_1.add(scrollPane_1);
 
 		JTextArea textArea = new JTextArea();
 		textArea.setText(mainhint);
 		textArea.setFont(lostfont);
 		textArea.setForeground(Color.GRAY);
+		textArea.setLineWrap(true);
 		textArea.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -186,6 +200,9 @@ public class Memogui extends JFrame {
 		panel_1.add(panel_2, BorderLayout.SOUTH);
 
 		JButton btnNewButton_3 = new JButton("음성저장");
+		btnNewButton_3.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		btnNewButton_3.setIcon(
+				new ImageIcon(Memogui.class.getResource("/jaco/mp3/player/plaf/resources/mp3PlayerSoundOn.png")));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tts.setInput(textField.getText() + textArea.getText());
@@ -201,6 +218,9 @@ public class Memogui extends JFrame {
 		});
 
 		JButton btnNewButton_6 = new JButton("불러오기");
+		btnNewButton_6.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		btnNewButton_6.setIcon(
+				new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JfileChooserUtil jcu = new JfileChooserUtil();
@@ -233,6 +253,9 @@ public class Memogui extends JFrame {
 		panel_2.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("텍스트저장");
+		btnNewButton_4.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		btnNewButton_4.setIcon(
+				new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			private OutputStream output;
 
@@ -261,21 +284,27 @@ public class Memogui extends JFrame {
 		panel_2.add(btnNewButton_4);
 
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("저장경로", null, panel_3, null);
+		tabbedPane.addTab("저장경로",
+				new ImageIcon(Memogui.class.getResource("/jaco/mp3/player/plaf/resources/mp3PlayerShuffle.png")),
+				panel_3, null);
 		panel_3.setLayout(new GridLayout(3, 1, 0, 0));
 
 		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4);
-		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.X_AXIS));
+		panel_4.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("메모파일 경로 : ");
-		panel_4.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel_4.add(lblNewLabel, BorderLayout.WEST);
 
 		textField_1 = new JTextField(fl.getConfigtotxtpath());
-		panel_4.add(textField_1);
+		textField_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel_4.add(textField_1, BorderLayout.CENTER);
 		textField_1.setColumns(10);
 
-		JButton btnNewButton_1 = new JButton("설정하기");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1
+				.setIcon(new ImageIcon(Memogui.class.getResource("/javax/swing/plaf/metal/icons/ocean/directory.gif")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JfileChooserUtil jcu = new JfileChooserUtil();
@@ -292,20 +321,24 @@ public class Memogui extends JFrame {
 				}
 			}
 		});
-		panel_4.add(btnNewButton_1);
+		panel_4.add(btnNewButton_1, BorderLayout.EAST);
 
 		JPanel panel_5 = new JPanel();
 		panel_3.add(panel_5);
-		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
+		panel_5.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("음성파일 경로 : ");
-		panel_5.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel_5.add(lblNewLabel_1, BorderLayout.WEST);
 
 		textField_2 = new JTextField(fl.getConfigtoaudiopath());
-		panel_5.add(textField_2);
+		textField_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel_5.add(textField_2, BorderLayout.CENTER);
 		textField_2.setColumns(10);
 
-		JButton btnNewButton_5 = new JButton("설정하기");
+		JButton btnNewButton_5 = new JButton("");
+		btnNewButton_5
+				.setIcon(new ImageIcon(Memogui.class.getResource("/javax/swing/plaf/metal/icons/ocean/directory.gif")));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Filelist fl = new Filelist();
@@ -322,14 +355,38 @@ public class Memogui extends JFrame {
 				}
 			}
 		});
-		panel_5.add(btnNewButton_5);
+		panel_5.add(btnNewButton_5, BorderLayout.EAST);
 
 		JPanel panel_6 = new JPanel();
 		panel_3.add(panel_6);
-		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_6.setLayout(new BorderLayout(0, 0));
+
+		JLabel lblNewLabel_2 = new JLabel("경로를 초기화 하시려면 초기화를 누른후 저장을 한번 눌러주세요");
+		lblNewLabel_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		lblNewLabel_2
+				.setIcon(new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/Warn.gif")));
+		panel_6.add(lblNewLabel_2, BorderLayout.SOUTH);
+
+		JPanel panel = new JPanel();
+		panel_6.add(panel, BorderLayout.CENTER);
 
 		JButton btnNewButton = new JButton("설정 저장");
-		panel_6.add(btnNewButton);
+		btnNewButton.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel.add(btnNewButton);
+		btnNewButton.setIcon(
+				new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
+
+		JButton btnNewButton_2 = new JButton("초기화");
+		btnNewButton_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		panel.add(btnNewButton_2);
+		btnNewButton_2
+				.setIcon(new ImageIcon(Memogui.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_1.setText(txtfilesearch);
+				textField_2.setText(audiofilesearch);
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener() {
 			private OutputStream output;
 
@@ -353,15 +410,6 @@ public class Memogui extends JFrame {
 
 			}
 		});
-
-		JButton btnNewButton_2 = new JButton("초기화");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textField_1.setText(txtfilesearch);
-				textField_2.setText(audiofilesearch);
-			}
-		});
-		panel_6.add(btnNewButton_2);
 
 	}
 }

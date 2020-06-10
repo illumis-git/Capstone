@@ -88,9 +88,10 @@ public class TTS {
 			ByteString audioContents = response.getAudioContent();
 
 			// Write the response to the output file.
-			try (OutputStream out = new FileOutputStream(getAudiosavepath() +"\\"+ getOutputfilename() + ".mp3")) {
+			try (OutputStream out = new FileOutputStream(getAudiosavepath() + "\\" + getOutputfilename() + ".mp3")) {
 				out.write(audioContents.toByteArray());
-				System.out.println("Audio content written to file \"output.mp3\""+getAudiosavepath()+getOutputfilename()+".mp3");
+				System.out.println("Audio content written to file \"output.mp3\"" + getAudiosavepath()
+						+ getOutputfilename() + ".mp3");
 			}
 
 		}

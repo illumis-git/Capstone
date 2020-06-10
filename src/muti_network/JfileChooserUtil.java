@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileSystemView;
 public class JfileChooserUtil {
 	private static String what;
 	private static String path;
+
 	public static String getPath() {
 		return path;
 	}
@@ -51,6 +52,7 @@ public class JfileChooserUtil {
 		return folderPath;
 
 	}
+
 	public static String jFileChooserUtilfile() {
 
 		String folderPath = "";
@@ -61,7 +63,7 @@ public class JfileChooserUtil {
 		chooser.setDialogTitle(getWhat()); // 창의 제목
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY); // 파일 선택 모드
 
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt 파일","txt"); //
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt 파일", "txt"); //
 		// filter 확장자 추가
 		chooser.setFileFilter(filter); // 파일 필터를 추가
 

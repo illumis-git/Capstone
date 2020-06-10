@@ -14,6 +14,7 @@ public class Filelist {
 	String configtotxtpath;
 	String configtoaudiopath;
 	String firstline = "";
+
 	public String getFirstline() {
 		return firstline;
 	}
@@ -27,7 +28,7 @@ public class Filelist {
 	}
 
 	public void setSecondingline(String secondingline) {
-		this.secondingline = this.secondingline +"\n"+ secondingline;
+		this.secondingline = this.secondingline + "\n" + secondingline;
 	}
 
 	String secondingline = "";
@@ -99,9 +100,7 @@ public class Filelist {
 					 * 
 					 * // 서브디렉토리가 존재하면 재귀적 방법으로 다시 탐색
 					 * 
-					 * subDirList(file.getCanonicalPath().toString());
-					 * 2차원배열로만들면될것같다.
-					 * }
+					 * subDirList(file.getCanonicalPath().toString()); 2차원배열로만들면될것같다. }
 					 */
 
 			}
@@ -153,23 +152,24 @@ public class Filelist {
 			}
 		}
 	}
+
 	public void gettxt(String str) {
-		
+
 		String line = "";
-		
+
 		try {
-			int i=0;
+			int i = 0;
 			File configpath = new File(str);
 			FileReader filereader = new FileReader(configpath);
 			BufferedReader bufReader = new BufferedReader(filereader);
 			while ((line = bufReader.readLine()) != null) {
-				if (i==0) {
-				setFirstline(line);
-				i++;
+				if (i == 0) {
+					setFirstline(line);
+					i++;
 				}
-				if (i==1) {
+				if (i == 1) {
 					setSecondingline(line);
-					
+
 				}
 			}
 			// .readLine()은 끝에 개행문자를 읽지 않는다.
@@ -178,7 +178,7 @@ public class Filelist {
 			// 출처: https://jeong-pro.tistory.com/69 [기본기를 쌓는 정아마추어 코딩블로그]
 
 		} catch (IOException e) {
-			
+
 		}
 	}
 	/*
