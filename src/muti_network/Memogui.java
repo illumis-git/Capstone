@@ -102,8 +102,8 @@ public class Memogui extends JFrame {
 		String mainhint = "본문";
 
 		Font gainfont = new Font("나눔고딕", Font.PLAIN, 22);
-		Font lostfont = new Font("나눔고딕", Font.ITALIC, 18);
-		Font gainfontmain = new Font("나눔고딕", Font.PLAIN, 20);
+		Font lostfont = new Font("나눔고딕", Font.ITALIC, 22);
+		Font gainfontmain = new Font("나눔고딕", Font.PLAIN, 22);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(364, 0)); //창 최소크기 상황따라서제거할수도..
 		setBounds(100, 100, 364, 502);
@@ -377,6 +377,7 @@ public class Memogui extends JFrame {
 				new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
 
 		JButton btnNewButton_2 = new JButton("초기화");
+		btnNewButton_2.setToolTipText("경로를 초기화 하시려면 초기화를 누른후 저장을 한번 눌러주세요");
 		btnNewButton_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		panel.add(btnNewButton_2);
 		btnNewButton_2
