@@ -14,6 +14,25 @@ public class Filelist {
 	String configtotxtpath;
 	String configtoaudiopath;
 	String firstline = "";
+	String configheadsize;
+	
+	public String getConfigheadsize() {
+		return configheadsize;
+	}
+
+	public void setConfigheadsize(String configheadsize) {
+		this.configheadsize = configheadsize;
+	}
+
+	public String getConfigmainsize() {
+		return configmainsize;
+	}
+
+	public void setConfigmainsize(String configmainsize) {
+		this.configmainsize = configmainsize;
+	}
+
+	String configmainsize;
 
 	public String getFirstline() {
 		return firstline;

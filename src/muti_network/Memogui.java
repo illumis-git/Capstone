@@ -63,6 +63,8 @@ public class Memogui extends JFrame {
 	}
 
 	String audiofilesearch = audiofile.getAbsolutePath();
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	public String getAudiofilesearch() {
 		return audiofilesearch;
@@ -287,7 +289,7 @@ public class Memogui extends JFrame {
 		tabbedPane.addTab("저장경로",
 				new ImageIcon(Memogui.class.getResource("/jaco/mp3/player/plaf/resources/mp3PlayerShuffle.png")),
 				panel_3, null);
-		panel_3.setLayout(new GridLayout(3, 1, 0, 0));
+		panel_3.setLayout(new GridLayout(5, 1, 0, 0));
 
 		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4);
@@ -356,6 +358,32 @@ public class Memogui extends JFrame {
 			}
 		});
 		panel_5.add(btnNewButton_5, BorderLayout.EAST);
+		
+		JPanel panel_6_1 = new JPanel();
+		panel_3.add(panel_6_1);
+		panel_6_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_1_1 = new JLabel("제목크기 : ");
+		lblNewLabel_1_1.setFont(new Font("Dialog", Font.PLAIN, 12));
+		panel_6_1.add(lblNewLabel_1_1, BorderLayout.WEST);
+		
+		textField_3 = new JTextField((String) null);
+		textField_3.setFont(new Font("Dialog", Font.PLAIN, 12));
+		textField_3.setColumns(10);
+		panel_6_1.add(textField_3, BorderLayout.CENTER);
+		
+		JPanel panel_6_1_1 = new JPanel();
+		panel_3.add(panel_6_1_1);
+		panel_6_1_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("본문크기 : ");
+		lblNewLabel_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 12));
+		panel_6_1_1.add(lblNewLabel_1_1_1, BorderLayout.WEST);
+		
+		textField_4 = new JTextField((String) null);
+		textField_4.setFont(new Font("Dialog", Font.PLAIN, 12));
+		textField_4.setColumns(10);
+		panel_6_1_1.add(textField_4, BorderLayout.CENTER);
 
 		JPanel panel_6 = new JPanel();
 		panel_3.add(panel_6);
