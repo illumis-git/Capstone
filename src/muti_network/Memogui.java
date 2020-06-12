@@ -220,6 +220,7 @@ public class Memogui extends JFrame {
 		});
 
 		JButton btnNewButton_6 = new JButton("불러오기");
+		btnNewButton_6.setToolTipText("컴퓨터에 저장된 txt파일을 불러옵니다.");
 		btnNewButton_6.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		btnNewButton_6.setIcon(
 				new ImageIcon(Memogui.class.getResource("/com/sun/java/swing/plaf/windows/icons/Directory.gif")));
@@ -296,6 +297,7 @@ public class Memogui extends JFrame {
 		panel_4.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("메모파일 경로 : ");
+		lblNewLabel.setToolTipText("텍스트파일이 저장될 경로입니다.");
 		lblNewLabel.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		panel_4.add(lblNewLabel, BorderLayout.WEST);
 
@@ -330,6 +332,7 @@ public class Memogui extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("음성파일 경로 : ");
+		lblNewLabel_1.setToolTipText("음성파일(.mp3)이 저장될 경로입니다.");
 		lblNewLabel_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		panel_5.add(lblNewLabel_1, BorderLayout.WEST);
 
@@ -364,6 +367,7 @@ public class Memogui extends JFrame {
 		panel_6_1.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1_1 = new JLabel("제목크기 : ");
+		lblNewLabel_1_1.setToolTipText("설정창의 글씨크기는 본문의 글씨크기와 같습니다.");
 		lblNewLabel_1_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel_6_1.add(lblNewLabel_1_1, BorderLayout.WEST);
 		
@@ -377,6 +381,7 @@ public class Memogui extends JFrame {
 		panel_6_1_1.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("본문크기 : ");
+		lblNewLabel_1_1_1.setToolTipText("설정창의 글씨크기는 본문의 글씨크기와 같습니다.");
 		lblNewLabel_1_1_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel_6_1_1.add(lblNewLabel_1_1_1, BorderLayout.WEST);
 		
