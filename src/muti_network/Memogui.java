@@ -102,7 +102,8 @@ public class Memogui extends JFrame {
 		TTS tts = new TTS();
 		String headhint = "제목";
 		String mainhint = "본문";
-
+		fl.setConfigheadsize(headhint);
+		fl.setConfigmainsize(mainhint);
 		Font gainfont = new Font("나눔고딕", Font.PLAIN, 22);
 		Font lostfont = new Font("나눔고딕", Font.ITALIC, 22);
 		Font gainfontmain = new Font("나눔고딕", Font.PLAIN, 22);

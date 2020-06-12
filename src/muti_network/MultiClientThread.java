@@ -88,7 +88,7 @@ public class MultiClientThread extends Thread {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				new MP3Player(new File("output.mp3")).play();
+				new MP3Player(new File("output.mp3")).play();  //스피커가연결되어있지않으면 오류남.
 
 			}
 		}

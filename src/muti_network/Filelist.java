@@ -147,6 +147,12 @@ public class Filelist {
 				if (line.contains("음성파일 경로 : ")) {
 					setConfigtoaudiopath(line);
 				}
+				if (line.contains("제목크기 : ")) {
+					setConfigheadsize(line);
+				}
+				if (line.contains("본문크기 : ")) {
+					
+				}
 			}
 			// .readLine()은 끝에 개행문자를 읽지 않는다.
 			bufReader.close();
@@ -161,7 +167,7 @@ public class Filelist {
 				e1.printStackTrace();
 			}
 			String str = "메모파일 경로 : " + defaultpath.getAbsolutePath() + "\n" + "음성파일 경로 : "
-					+ defaultpath.getAbsolutePath();
+					+ defaultpath.getAbsolutePath() + "\n" + "제목크기 : " + getConfigheadsize() + "\n"+ "본문크기 : " + getConfigmainsize();
 			byte[] configby = str.getBytes();
 			try {
 				output.write(configby);
